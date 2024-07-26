@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试部署成功后的接口</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <div>
+    <h1>测试部署成功后的接口</h1>
+    <button onclick="handleAdd()">新增</button>
+    <button onclick="handleUpdate()">修改</button>
+    <button onclick="handleDelete()">删除</button>
+    <button onclick="handleQuery()">查询</button>
+    <button onclick="handleGetAll()">获取所有</button>
+  </div>
+  <script>
+    const baseUrl = 'https://my-express-app-teal.vercel.app/items'
+    function handleAdd() {
+      axios({
+        method: 'post',
+        url: `${baseUrl}`,
+        data: {
+          // 添加数据
+          name: "蛋糕",
+          description: "好吃",
+          price: 88888
+        }
+      }).then(response => {
+        console.log('新增成功', response)
+      }).catch(error => {
+        console.error('新增失败', error)
+      })
+    }
+
+    function handleUpdate() {
+      axios({
+        method: 'put',
+        url: `${baseUrl}/2`,
+        data: {
+          name: "蛋糕",
+          description: "好吃",
+          price: 99999
+        }
+      }).then(response => {
+        console.log('修改成功', response)
+      }).catch(error => {
+        console.error('修改失败', error)
+      })
+    }
+
+    function handleDelete() {
+      axios({
+        method: 'delete',
+        url: `${baseUrl}/23`,
+        data: {
+          // 删除数据
+        }
+      }).then(response => {
+        console.log('删除成功', response)
+      }).catch(error => {
+        console.error('删除失败', error)
+      })
+    }
+
+    function handleQuery() {
+      axios({
+        method: 'get',
+        url: `${baseUrl}/21`
+      }).then(response => {
+        console.log('查询成功', response)
+      }).catch(error => {
+        console.error('查询失败', error)
+      })
+    }
+
+    function handleGetAll() {
+      axios({
+        method: 'get',
+        url: `${baseUrl}`
+      }).then(response => {
+        console.log('查询成功', response)
+      }).catch(error => {
+        console.error('查询失败', error)
+      })
+    }
+  </script>
+</body>
+
+</html>
