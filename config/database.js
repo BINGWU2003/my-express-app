@@ -2,8 +2,8 @@
  * @Author: BINGWU
  * @Date: 2024-07-26 16:54:12
  * @LastEditors: hujiacheng hujiacheng@iipcloud.com
- * @LastEditTime: 2024-07-26 16:54:18
- * @FilePath: \my-express-app\config\db.js
+ * @LastEditTime: 2024-07-26 18:19:45
+ * @FilePath: \my-express-app\config\database.js
  * @Describe: 
  * @Mark: ૮(˶ᵔ ᵕ ᵔ˶)ა
  */
@@ -16,6 +16,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   host: process.env.DB_HOST,
   dialect: 'mysql',
   port: process.env.DB_PORT,
+  dialectModule: require('mysql2')
 });
 
 module.exports = sequelize;
